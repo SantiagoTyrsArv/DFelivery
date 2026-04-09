@@ -31,7 +31,7 @@ class Product {
       price: 8.24,
       rating: 4.9,
       deliveryTime: '26 mins',
-      imagePath: 'assets/images/burgers/cheeseburger.png',
+      imagePath: 'assets/images/burgers/Group 19.png',
       category: 'All',
     ),
     Product(
@@ -43,7 +43,7 @@ class Product {
       price: 9.99,
       rating: 4.8,
       deliveryTime: '20 mins',
-      imagePath: 'assets/images/burgers/veggie_burger.png',
+      imagePath: 'assets/images/burgers/Group 19(2).png',
       category: 'All',
     ),
     Product(
@@ -55,7 +55,7 @@ class Product {
       price: 12.48,
       rating: 4.6,
       deliveryTime: '30 mins',
-      imagePath: 'assets/images/burgers/chicken_burger.png',
+      imagePath: 'assets/images/burgers/Group 19(3).png',
       category: 'All',
     ),
     Product(
@@ -67,7 +67,7 @@ class Product {
       price: 26.99,
       rating: 4.5,
       deliveryTime: '25 mins',
-      imagePath: 'assets/images/burgers/fried_chicken_burger.png',
+      imagePath: 'assets/images/burgers/Group 19(4).png',
       category: 'All',
     ),
   ];

@@ -5,6 +5,7 @@ import '../widgets/product_card.dart';
 import '../widgets/category_chip.dart';
 import '../widgets/bottom_nav_bar.dart';
 import 'product_detail_screen.dart';
+import 'product_customize_screen.dart';
 import 'user_profile_screen.dart';
 import 'customer_support_screen.dart';
 
@@ -167,6 +168,16 @@ class _HomeScreenState extends State<HomeScreen> {
               right: 0,
               child: BottomNavBar(
                 currentIndex: 0,
+                onFabTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => ProductCustomizeScreen(
+                        product: Product.sampleProducts[0],
+                      ),
+                    ),
+                  );
+                },
                 onTap: (index) {
                   if (index == 1) {
                     Navigator.push(

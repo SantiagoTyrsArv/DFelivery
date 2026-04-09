@@ -51,14 +51,23 @@ class _SplashScreenState extends State<SplashScreen> {
                 ),
               ),
             ),
-            // Burger images at bottom
+            // Big burger (Background/Left)
             Positioned(
-              bottom: -20,
-              left: 0,
-              right: 0,
+              left: -20,
+              bottom: -15,
               child: Image.asset(
-                'assets/images/burgers/splash_burgers.png',
-                height: 300,
+                'assets/images/burgers/image 2.png',
+                height: 225,
+                fit: BoxFit.contain,
+              ),
+            ),
+            // Small burger (Foreground/Right) — overlapping big burger
+            Positioned(
+              left: 100,
+              bottom: 3,
+              child: Image.asset(
+                'assets/images/burgers/image 1.png',
+                height: 140,
                 fit: BoxFit.contain,
               ),
             ),

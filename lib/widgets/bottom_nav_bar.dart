@@ -4,31 +4,33 @@ import '../theme/app_theme.dart';
 class BottomNavBar extends StatelessWidget {
   final int currentIndex;
   final Function(int) onTap;
+  final VoidCallback? onFabTap;
 
   const BottomNavBar({
     super.key,
     required this.currentIndex,
     required this.onTap,
+    this.onFabTap,
   });
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 80,
+      height: 70,
       child: Stack(
         clipBehavior: Clip.none,
         alignment: Alignment.bottomCenter,
         children: [
           // Curved red bar
           CustomPaint(
-            size: Size(MediaQuery.of(context).size.width, 70),
+            size: Size(MediaQuery.of(context).size.width, 60),
             painter: _CurvedNavPainter(),
           ),
           // FAB button
           Positioned(
-            top: -20,
+            top: -12,
             child: GestureDetector(
-              onTap: () {},
+              onTap: onFabTap ?? () {},
               child: Container(
                 width: 56,
                 height: 56,
@@ -63,7 +65,7 @@ class BottomNavBar extends StatelessWidget {
                 _navIcon(Icons.home_rounded, 0),
                 _navIcon(Icons.person_outline, 1),
                 const SizedBox(width: 56), // Space for FAB
-                _navIcon(Icons.emoji_emotions_outlined, 2),
+                _navIcon(Icons.chat_bubble_outline, 2),
                 _navIcon(Icons.favorite, 3),
               ],
             ),
@@ -94,19 +96,33 @@ class _CurvedNavPainter extends CustomPainter {
 
     final path = Path();
     final midX = size.width / 2;
+    const notchRadius = 34.0; // Matches FAB radius + gap
 
+    // Start bottom-left, go up to top-left with rounded corner
     path.moveTo(0, 20);
     path.quadraticBezierTo(0, 0, 20, 0);
-    path.lineTo(midX - 40, 0);
-    path.quadraticBezierTo(midX - 20, 0, midX - 20, 20);
+
+    // Top edge → approach notch
+    path.lineTo(midX - notchRadius - 12, 0);
+
+    // Smooth curve down into the notch
+    path.quadraticBezierTo(midX - notchRadius, 0, midX - notchRadius, notchRadius * 0.45);
+
+    // Deep semicircular notch
     path.arcToPoint(
-      Offset(midX + 20, 20),
-      radius: const Radius.circular(24),
+      Offset(midX + notchRadius, notchRadius * 0.45),
+      radius: const Radius.circular(notchRadius),
       clockwise: false,
     );
-    path.quadraticBezierTo(midX + 20, 0, midX + 40, 0);
+
+    // Smooth curve back up from notch
+    path.quadraticBezierTo(midX + notchRadius, 0, midX + notchRadius + 12, 0);
+
+    // Top edge → top-right rounded corner
     path.lineTo(size.width - 20, 0);
     path.quadraticBezierTo(size.width, 0, size.width, 20);
+
+    // Right edge → bottom → left edge
     path.lineTo(size.width, size.height);
     path.lineTo(0, size.height);
     path.close();

@@ -77,7 +77,7 @@ class _ProductCustomizeScreenState extends State<ProductCustomizeScreen> {
                         children: [
                           // Burger image
                           Image.asset(
-                            'assets/images/burgers/custom_burger.png',
+                            'assets/images/burgers/pngwing 12.png',
                             width: 160,
                             height: 180,
                             fit: BoxFit.contain,

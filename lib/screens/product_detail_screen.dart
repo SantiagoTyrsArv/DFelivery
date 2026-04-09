@@ -3,7 +3,7 @@ import '../theme/app_theme.dart';
 import '../models/product.dart';
 import '../widgets/spicy_slider.dart';
 import '../widgets/portion_selector.dart';
-import 'product_customize_screen.dart';
+import 'payment_screen.dart';
 
 class ProductDetailScreen extends StatefulWidget {
   final Product product;
@@ -183,9 +183,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => ProductCustomizeScreen(
-                              product: widget.product,
-                            ),
+                            builder: (context) => const PaymentScreen(),
                           ),
                         );
                       },
